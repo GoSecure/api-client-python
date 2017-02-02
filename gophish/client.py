@@ -1,6 +1,5 @@
 import requests
-from urllib.request import build_opener, install_opener, HTTPSHandler, \
-                                    Request, urlopen
+from urllib.request import Request, urlopen
 
 
 from gophish.api import (
