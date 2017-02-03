@@ -124,12 +124,13 @@ class APIEndpoint_urllib(object):
         self.endpoint = endpoint
         self._cls = cls
 
-    def get(self, resource_id=None):
+    def get(self, resource_id=None, resource_action=None):
         """ Gets the details for one or more resources by ID
         
         Args:
             cls - gophish.models.Model - The resource class
             resource_id - str - The endpoint (URL path) for the resource
+            resource_action - str - An action to perform on the resource
 
         Returns:
             One or more instances of cls parsed from the returned JSON
@@ -139,6 +140,9 @@ class APIEndpoint_urllib(object):
 
         if resource_id:
             endpoint = '{}{}'.format(endpoint, resource_id)
+
+        if resource_action:
+            endpoint = '{}/{}'.format(endpoint, resource_action)
 
         try:
             response = self.api.execute("GET", endpoint)
